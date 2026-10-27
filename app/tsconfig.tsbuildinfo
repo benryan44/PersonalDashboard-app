@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/lib/calendar.ts","./src/lib/ics.test.ts","./src/lib/ics.ts","./src/lib/reminders.ts","./src/lib/state.test.ts","./src/lib/state.ts","./src/lib/time.ts","./src/screens/Brief.tsx","./src/screens/Evening.tsx","./src/screens/Morning.tsx","./src/screens/Settings.tsx","./src/screens/shared.ts"],"version":"5.9.3"}

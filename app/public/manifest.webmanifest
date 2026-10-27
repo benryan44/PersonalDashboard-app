@@ -1,0 +1,21 @@
+{
+  "name": "Daily Brief",
+  "short_name": "Daily Brief",
+  "description": "Your day from your calendars, a morning plan you commit to, and an evening check-in.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5ead8",
+  "theme_color": "#f5ead8",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Morning plan", "url": "/?tab=morning" },
+    { "name": "Evening reflection", "url": "/?tab=evening" }
+  ]
+}

@@ -1,0 +1,16 @@
+# Render Blueprint: deploys the Daily Brief app (app/) as a free Node web service.
+# Every push to the branch below redeploys automatically.
+services:
+  - type: web
+    name: daily-brief
+    runtime: node
+    plan: free
+    branch: daily-brief-app
+    rootDir: app
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /manifest.webmanifest
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="_ds/organic-1c5ee379-8089-4fc7-ac4c-0dac16e49d36/styles.css"><style>body{margin:0;background:#d9cbb2}a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-600)}button{font-family:var(--font-body);cursor:pointer}input{font-family:var(--font-body)}::-webkit-scrollbar{display:none}</style></helmet>
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box">
+<div style="--bg:light-dark(#f5ead8,#1c1813);--sf:light-dark(#ebddc5,#2a241c);--cd:light-dark(#fbf5ea,#26201a);--tx:light-dark(#201e1d,#f4e9d7);--mu:light-dark(#6f6759,#a99e8c);--ac:light-dark(#c67139,#e48d55);--act:light-dark(#8c491a,#f6a06b);--acs:light-dark(#f6dcc4,#4a3222);--a2:light-dark(#7a8a5e,#aebf92);--a2s:light-dark(#dfe8cb,#333b25);--ln:light-dark(#e0d1b7,#37302a);--on:light-dark(#fff,#1c1813);color-scheme:{{ scheme }};width:390px;height:844px;background:var(--bg);border-radius:52px;box-shadow:0 0 0 10px #1d1a16,0 30px 80px rgba(40,30,20,.35);position:relative;overflow:hidden;color:var(--tx);flex:none;font-family:var(--font-body)">
+
+<div style="position:absolute;top:0;left:0;right:0;height:52px;display:flex;justify-content:space-between;align-items:center;padding:8px 34px 0;font-size:15px;font-weight:700;z-index:5;background:var(--bg)"><span>{{ clock }}</span><div style="position:absolute;left:50%;top:11px;width:110px;height:31px;background:#1d1a16;border-radius:20px;transform:translateX(-50%)"></div><span style="font-size:12px;letter-spacing:.05em">5G ▪▪▪</span></div>
+
+<div style="position:absolute;top:52px;bottom:92px;left:0;right:0;overflow-y:auto;padding:10px 22px 28px">
+
+<sc-if value="{{ isBrief }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+<div><div style="font-size:13px;color:var(--mu);font-weight:600">Tuesday · 27 October</div>
+<h1 style="font-size:38px;margin:8px 0 0;line-height:1.05">Good morning,<br><span style="color:var(--ac)">here's your day.</span></h1></div>
+<div style="background:var(--acs);border-radius:999px;padding:9px 14px;text-align:center;flex:none"><div style="font-family:var(--font-heading);font-size:22px;line-height:1;color:var(--act)">{{ streak }}</div><div style="font-size:10px;font-weight:600;color:var(--act);margin-top:2px">DAY STREAK</div></div></div>
+
+<div style="display:flex;gap:8px;margin:20px 0 10px">
+<div style="flex:1;background:var(--cd);border-radius:var(--radius-md);padding:12px 14px"><div style="font-family:var(--font-heading);font-size:24px;line-height:1">{{ eventCount }}</div><div style="font-size:12px;color:var(--mu);margin-top:4px">events</div></div>
+<div style="flex:1;background:var(--cd);border-radius:var(--radius-md);padding:12px 14px"><div style="font-family:var(--font-heading);font-size:24px;line-height:1">{{ taskLeft }}<span style="font-size:14px;color:var(--mu)">/{{ taskTotal }}</span></div><div style="font-size:12px;color:var(--mu);margin-top:4px">plan left</div></div>
+<div style="flex:1;background:var(--a2s);border-radius:var(--radius-md);padding:12px 14px"><div style="font-family:var(--font-heading);font-size:24px;line-height:1">3<span style="font-size:14px;color:var(--mu)">/4</span></div><div style="font-size:12px;color:var(--mu);margin-top:4px">gym this wk</div></div></div>
+<div style="background:var(--acs);border-radius:999px;padding:10px 16px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--act);margin-bottom:24px"><div style="width:8px;height:8px;border-radius:50%;background:var(--ac);flex:none"></div>Month-end check-ins due today · 12:00</div>
+
+<h6 style="color:var(--mu);margin-bottom:12px">Today</h6>
+<sc-for list="{{ timeline }}" as="it" hint-placeholder-count="5">
+<div style="display:flex;gap:12px;margin-bottom:10px;align-items:stretch">
+<div style="width:42px;flex:none;font-size:13px;font-weight:700;color:var(--mu);padding-top:14px;font-variant-numeric:tabular-nums">{{ it.time }}</div>
+<sc-if value="{{ it.isNow }}"><div style="flex:1;display:flex;align-items:center;gap:8px"><div style="width:9px;height:9px;border-radius:50%;background:var(--ac)"></div><div style="flex:1;height:2px;border-radius:2px;background:var(--ac);opacity:.4"></div><div style="font-size:11px;font-weight:700;color:var(--ac)">NOW</div></div></sc-if>
+<sc-if value="{{ it.isEvent }}"><div style="flex:1;background:var(--cd);border-radius:var(--radius-md);padding:12px 14px;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow-sm)"><div style="width:10px;height:10px;border-radius:50%;background:{{ it.color }};flex:none"></div><div><div style="font-size:15px;font-weight:700">{{ it.title }}</div><div style="font-size:12px;color:var(--mu);margin-top:2px">{{ it.sub }}</div></div></div></sc-if>
+<sc-if value="{{ it.isTask }}"><div onClick="{{ it.toggle }}" style="flex:1;background:var(--acs);border-radius:var(--radius-md);padding:12px 14px;display:flex;gap:12px;align-items:center;cursor:pointer;opacity:{{ it.op }}"><div style="width:24px;height:24px;border-radius:50%;border:2.5px solid var(--ac);background:{{ it.fill }};color:var(--on);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none">{{ it.mark }}</div><div><div style="font-size:15px;font-weight:700;text-decoration:{{ it.deco }}">{{ it.title }}</div><div style="font-size:12px;color:var(--act);margin-top:2px;font-weight:600">{{ it.sub }}</div></div></div></sc-if>
+</div></sc-for>
+<button onClick="{{ goEvening }}" style="width:100%;margin-top:14px;border:0;background:var(--tx);color:var(--bg);border-radius:var(--radius-lg);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;text-align:left"><span><span style="display:block;font-size:12px;opacity:.7">Tonight · {{ eveTime }}</span><span style="display:block;font-family:var(--font-heading);font-size:19px;margin-top:3px">How was your day?</span></span><span style="font-size:22px">→</span></button>
+</sc-if>
+
+<sc-if value="{{ isMorning }}">
+<div style="font-size:13px;color:var(--mu);font-weight:600">Morning check-in · {{ morTime }}</div>
+<h1 style="font-size:38px;margin:8px 0 10px;line-height:1.05">What's the plan,<br><span style="color:var(--ac)">and when?</span></h1>
+<div style="font-size:14px;color:var(--mu);line-height:1.5;margin-bottom:20px">Check-ins are at 12:00, so you're clear before that and after 13:00. Pick a time for each — I'll hold you to it.</div>
+<sc-for list="{{ taskRows }}" as="t" hint-placeholder-count="3">
+<div style="background:var(--cd);border-radius:var(--radius-md);padding:12px 12px 12px 16px;margin-bottom:10px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow-sm)">
+<div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:700">{{ t.title }}</div><div style="font-size:11px;color:var(--act);font-weight:600;margin-top:1px">{{ t.tag }}</div></div>
+<button onClick="{{ t.earlier }}" style="width:32px;height:32px;border-radius:50%;border:0;background:var(--sf);font-size:17px;color:var(--tx)">−</button>
+<div style="width:50px;text-align:center;font-family:var(--font-heading);font-size:16px;font-variant-numeric:tabular-nums">{{ t.time }}</div>
+<button onClick="{{ t.later }}" style="width:32px;height:32px;border-radius:50%;border:0;background:var(--sf);font-size:17px;color:var(--tx)">+</button></div></sc-for>
+<div style="display:flex;gap:8px;margin:14px 0 22px"><input value="{{ draft }}" onChange="{{ setDraft }}" placeholder="Add something…" style="flex:1;min-width:0;border:1.5px solid var(--ln);background:transparent;border-radius:999px;padding:13px 18px;font-size:15px;outline:none;color:var(--tx)"><button onClick="{{ addTask }}" style="border:0;background:var(--sf);color:var(--tx);border-radius:999px;padding:0 20px;font-weight:700;font-size:14px">Add</button></div>
+<button onClick="{{ commit }}" style="width:100%;border:0;border-radius:999px;padding:17px;font-family:var(--font-heading);font-size:17px;background:{{ commitBg }};color:var(--on)">{{ commitLabel }}</button>
+<div style="font-size:12px;color:var(--mu);text-align:center;margin-top:10px;line-height:1.4">{{ commitNote }}</div>
+</sc-if>
+
+<sc-if value="{{ isEvening }}">
+<div style="font-size:13px;color:var(--mu);font-weight:600">Evening reflection · {{ eveTime }}</div>
+<h1 style="font-size:38px;margin:8px 0 18px;line-height:1.05">How was<br><span style="color:var(--ac)">your day?</span></h1>
+<div style="display:flex;gap:6px;margin-bottom:24px">
+<sc-for list="{{ moods }}" as="m" hint-placeholder-count="5"><button onClick="{{ m.pick }}" style="flex:1;border:0;border-radius:999px;padding:11px 0;background:{{ m.bg }};color:{{ m.fg }};font-size:12px;font-weight:700">{{ m.label }}</button></sc-for></div>
+<h6 style="color:var(--mu);margin-bottom:10px">What got done?</h6>
+<sc-for list="{{ eveRows }}" as="t" hint-placeholder-count="3">
+<div onClick="{{ t.toggle }}" style="background:var(--cd);border-radius:var(--radius-md);padding:13px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px;cursor:pointer;box-shadow:var(--shadow-sm)">
+<div style="width:24px;height:24px;border-radius:50%;border:2.5px solid {{ t.ring }};background:{{ t.fill }};color:var(--on);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none">{{ t.mark }}</div>
+<div style="flex:1"><div style="font-size:15px;font-weight:700">{{ t.title }}</div><div style="font-size:12px;color:{{ t.subColor }};margin-top:2px;font-weight:600">{{ t.sub }}</div></div></div></sc-for>
+<h6 style="color:var(--mu);margin:20px 0 10px">One line on today</h6>
+<input value="{{ note }}" onChange="{{ setNote }}" placeholder="What stood out?" style="width:100%;border:0;background:var(--cd);border-radius:999px;padding:14px 18px;font-size:15px;outline:none;color:var(--tx);box-sizing:border-box">
+<button onClick="{{ finishDay }}" style="width:100%;margin-top:18px;border:0;border-radius:999px;padding:17px;font-family:var(--font-heading);font-size:17px;background:{{ finishBg }};color:var(--on)">{{ finishLabel }}</button>
+<div style="font-size:12px;color:var(--mu);text-align:center;margin-top:10px;line-height:1.4">{{ finishNote }}</div>
+</sc-if>
+
+<sc-if value="{{ isSettings }}">
+<h1 style="font-size:38px;margin:8px 0 20px">Settings</h1>
+<h6 style="color:var(--mu);margin-bottom:10px">Calendars</h6>
+<sc-for list="{{ calRows }}" as="c" hint-placeholder-count="3">
+<div style="background:var(--cd);border-radius:var(--radius-md);padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px"><div style="width:10px;height:10px;border-radius:50%;background:{{ c.color }};flex:none"></div><div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:700">{{ c.name }}</div><div style="font-size:12px;color:var(--mu)">{{ c.acct }}</div></div>
+<div onClick="{{ c.toggle }}" style="width:48px;height:28px;border-radius:14px;background:{{ c.track }};position:relative;cursor:pointer;flex:none"><div style="position:absolute;top:3px;left:{{ c.knob }};width:22px;height:22px;border-radius:50%;background:#fff;transition:left .2s"></div></div></div></sc-for>
+<h6 style="color:var(--mu);margin:22px 0 10px">Check-in times</h6>
+<div style="background:var(--cd);border-radius:var(--radius-md);padding:4px 14px">
+<div style="display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--ln)"><div style="flex:1;font-size:15px;font-weight:700">Morning plan</div><button onClick="{{ morDown }}" style="width:32px;height:32px;border-radius:50%;border:0;background:var(--sf);color:var(--tx)">−</button><div style="width:50px;text-align:center;font-family:var(--font-heading)">{{ morTime }}</div><button onClick="{{ morUp }}" style="width:32px;height:32px;border-radius:50%;border:0;background:var(--sf);color:var(--tx)">+</button></div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px 0"><div style="flex:1;font-size:15px;font-weight:700">Evening reflection</div><button onClick="{{ eveDown }}" style="width:32px;height:32px;border-radius:50%;border:0;background:var(--sf);color:var(--tx)">−</button><div style="width:50px;text-align:center;font-family:var(--font-heading)">{{ eveTime }}</div><button onClick="{{ eveUp }}" style="width:32px;height:32px;border-radius:50%;border:0;background:var(--sf);color:var(--tx)">+</button></div></div>
+<h6 style="color:var(--mu);margin:22px 0 10px">Appearance</h6>
+<div style="display:flex;gap:6px;background:var(--sf);border-radius:999px;padding:4px"><sc-for list="{{ themes }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.pick }}" style="flex:1;border:0;border-radius:999px;padding:10px 0;background:{{ o.bg }};color:{{ o.fg }};font-size:14px;font-weight:700">{{ o.label }}</button></sc-for></div>
+<h6 style="color:var(--mu);margin:22px 0 10px">Notification previews</h6>
+<sc-for list="{{ previews }}" as="p" hint-placeholder-count="3">
+<div style="background:var(--sf);border-radius:var(--radius-md);padding:12px 14px;margin-bottom:8px;display:flex;gap:12px;align-items:center"><div style="width:36px;height:36px;border-radius:50%;background:var(--ac);flex:none"></div><div style="flex:1;min-width:0"><div style="font-size:11px;color:var(--mu);font-weight:600">{{ p.when }}</div><div style="font-size:14px;font-weight:700;margin-top:1px">{{ p.text }}</div></div></div></sc-for>
+</sc-if>
+</div>
+
+<sc-if value="{{ showNudge }}"><div style="position:absolute;top:60px;left:12px;right:12px;background:var(--tx);color:var(--bg);border-radius:var(--radius-lg);padding:14px 16px;z-index:9;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow-lg)"><div style="width:36px;height:36px;border-radius:50%;background:var(--ac);flex:none"></div><div style="flex:1"><div style="font-size:11px;opacity:.65;font-weight:600">DAILY BRIEF · now</div><div style="font-size:14px;font-weight:700;margin-top:1px">{{ nudgeText }}</div></div></div></sc-if>
+
+<div style="position:absolute;left:14px;right:14px;bottom:26px;height:56px;background:var(--cd);border-radius:999px;box-shadow:var(--shadow-md);display:flex;gap:4px;padding:5px;box-sizing:border-box;z-index:6">
+<sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="4"><button onClick="{{ tb.go }}" style="flex:1;border:0;background:{{ tb.bg }};color:{{ tb.fg }};border-radius:999px;font-size:13px;font-weight:700">{{ tb.label }}</button></sc-for></div>
+<div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:var(--tx);opacity:.85"></div>
+</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Appearance&quot;}}">
+class Component extends DCLogic {
+  state = { tab: 'brief', tasks: [
+    { id: 1, t: 'Finish client check-ins', m: 630, done: false, tag: 'Due 12:00 today' },
+    { id: 2, t: 'Gym — legs', m: 1050, done: false, tag: 'Goal · 3/4 this week' },
+    { id: 3, t: 'Call mum', m: 1200, done: false, tag: 'Carried from Mon' } ],
+    draft: '', committed: false, mood: 3, note: '', finished: false, nid: 4, mor: 450, eve: 1260, dark: null,
+    cals: { Work: true, College: true }, nudge: null };
+  events = [
+    { m: 720, t: 'End of month check-ins', s: '12:00–13:00 · Google Meet', c: 'Work' } ];
+  cols = { Work: 'var(--ac)', College: 'var(--a2)' };
+  accts = { Work: 'Wicklow Strength & Fitness · Google', College: 'TU Dublin timetable · iCal · no classes today' };
+  f = m => String(Math.floor(m / 60) % 24).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+  componentDidMount() { this._t = setTimeout(() => this.nudge('Gym at 17:30. Be there — your streak is on the line.'), 1500); }
+  componentWillUnmount() { clearTimeout(this._t); clearTimeout(this._n); }
+  nudge(text) { this.setState({ nudge: text }); clearTimeout(this._n); this._n = setTimeout(() => this.setState({ nudge: null }), 3600); }
+  upd(id, fn) { this.setState(s => ({ tasks: s.tasks.map(t => t.id === id ? fn(t) : t), committed: false })); }
+  renderVals() {
+    const s = this.state, f = this.f, tab = s.tab, now = 492;
+    const isDark = s.dark !== null ? s.dark : this.props.theme === 'dark';
+    const evs = this.events.filter(e => s.cals[e.c]);
+    const items = [
+      ...evs.map(e => ({ m: e.m, isEvent: true, title: e.t, sub: e.s, color: this.cols[e.c] })),
+      ...s.tasks.map(t => ({ m: t.m, isTask: true, title: t.t, sub: s.committed ? 'Committed · ' + f(t.m) : t.tag, op: t.done ? .5 : 1, fill: t.done ? 'var(--ac)' : 'transparent', mark: t.done ? '✓' : '', deco: t.done ? 'line-through' : 'none', toggle: () => this.upd(t.id, x => ({ ...x, done: !x.done })) })),
+      { m: now, isNow: true }].sort((a, b) => a.m - b.m).map(i => ({ ...i, time: f(i.m) }));
+    const left = s.tasks.filter(t => !t.done).length;
+    const set = (k, v) => () => this.setState({ [k]: v });
+    const step = (k, d) => () => this.setState(st => ({ [k]: Math.max(0, Math.min(1439, st[k] + d)) }));
+    const missed = s.tasks.filter(t => !t.done);
+    const moods = ['Rough', 'Meh', 'Okay', 'Good', 'Great'];
+    const tabs = [['brief', 'Brief'], ['morning', 'Morning'], ['evening', 'Evening'], ['settings', 'Settings']];
+    const clocks = { brief: '08:12', morning: f(s.mor), evening: f(s.eve), settings: '08:12' };
+    const sel = (a, b) => a === b;
+    return {
+      scheme: isDark ? 'dark' : 'light',
+      clock: clocks[tab], isBrief: tab === 'brief', isMorning: tab === 'morning', isEvening: tab === 'evening', isSettings: tab === 'settings',
+      streak: s.finished ? 13 : 12, eventCount: evs.length, taskLeft: left, taskTotal: s.tasks.length,
+      timeline: items, eveTime: f(s.eve), morTime: f(s.mor),
+      goEvening: set('tab', 'evening'),
+      taskRows: s.tasks.map(t => ({ title: t.t, tag: t.tag, time: f(t.m), earlier: () => this.upd(t.id, x => ({ ...x, m: x.m - 30 })), later: () => this.upd(t.id, x => ({ ...x, m: x.m + 30 })) })),
+      draft: s.draft, setDraft: e => this.setState({ draft: e.target.value }),
+      addTask: () => this.setState(st => st.draft.trim() ? { tasks: [...st.tasks, { id: st.nid, t: st.draft.trim(), m: 840, done: false, tag: 'Added today' }], nid: st.nid + 1, draft: '', committed: false } : null),
+      commit: () => { this.setState({ committed: true }); this.nudge('Locked in. First up: ' + s.tasks[0].t + ' at ' + f(s.tasks[0].m) + '.'); setTimeout(() => this.setState({ tab: 'brief' }), 900); },
+      commitBg: s.committed ? 'var(--a2)' : 'var(--ac)', commitLabel: s.committed ? 'Committed ✓' : "I'm committing to this",
+      commitNote: s.committed ? "I'll check in at each time." : "I'll nudge you at each time and ask tonight how it went.",
+      moods: moods.map((l, i) => ({ label: l, pick: set('mood', i), bg: s.mood === i ? 'var(--ac)' : 'var(--sf)', fg: s.mood === i ? 'var(--on)' : 'var(--tx)' })),
+      eveRows: s.tasks.map(t => ({ title: t.t, toggle: () => this.upd(t.id, x => ({ ...x, done: !x.done })), ring: t.done ? 'var(--a2)' : 'var(--ac)', fill: t.done ? 'var(--a2)' : 'transparent', mark: t.done ? '✓' : '', sub: t.done ? 'Done at ' + f(t.m) : 'Not done → moves to tomorrow', subColor: t.done ? 'var(--a2)' : 'var(--act)' })),
+      note: s.note, setNote: e => this.setState({ note: e.target.value }),
+      finishDay: () => { this.setState({ finished: true }); if (!s.finished) this.nudge(missed.length ? missed.length + ' carried to tomorrow. Sleep well.' : 'Clean sweep. Streak: 13.'); },
+      finishBg: s.finished ? 'var(--a2)' : 'var(--ac)', finishLabel: s.finished ? 'Day closed ✓' : 'Close the day',
+      finishNote: s.finished ? (missed.length ? missed.length + ' task' + (missed.length > 1 ? 's' : '') + ' queued for tomorrow morning.' : 'Nothing left over.') : (missed.length ? missed.length + ' unfinished will carry into tomorrow\'s plan.' : 'Everything done — nice.'),
+      calRows: Object.keys(s.cals).map(k => ({ name: k, acct: this.accts[k], color: this.cols[k], track: s.cals[k] ? 'var(--a2)' : 'var(--ln)', knob: s.cals[k] ? '23px' : '3px', toggle: () => this.setState(st => ({ cals: { ...st.cals, [k]: !st.cals[k] } })) })),
+      morDown: step('mor', -30), morUp: step('mor', 30), eveDown: step('eve', -30), eveUp: step('eve', 30),
+      themes: [['Light', false], ['Dark', true]].map(([l, d]) => ({ label: l, pick: set('dark', d), bg: isDark === d ? 'var(--ac)' : 'transparent', fg: isDark === d ? 'var(--on)' : 'var(--tx)' })),
+      previews: [{ when: f(s.mor) + ' · Morning', text: 'Good morning. What are you doing today, and when?' }, { when: '17:15 · Firm reminder', text: 'Gym at 17:30. Be there — your streak is on the line.' }, { when: f(s.eve) + ' · Evening', text: 'How was today? 2 things didn\'t get done.' }],
+      showNudge: !!s.nudge, nudgeText: s.nudge,
+      tabs: tabs.map(([k, l]) => ({ label: l, go: set('tab', k), bg: tab === k ? 'var(--ac)' : 'transparent', fg: tab === k ? 'var(--on)' : 'var(--mu)' }))
+    };
+  }
+}
+</script>
+</body>
+</html>
